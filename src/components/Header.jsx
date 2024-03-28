@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -16,9 +17,8 @@ function Header() {
         <h4 className='no-underline hover:underline'>REGISTER</h4>
         </Link>
       </div>
-
-    </div>
-  )
+    </>
+  );
 }
 
-export default Header
+export default Header;
