@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -17,8 +16,12 @@ function Header() {
         <h4 className='no-underline hover:underline'>REGISTER</h4>
         </Link>
       </div>
-    </>
-  );
+
+    </div>
+  )
 }
 
 export default Header;
+
+// References
+{/* <Link to={'./Login.jsx'}><h4 className=' no-underline hover:underline'>LOGIN</h4></Link> */}
