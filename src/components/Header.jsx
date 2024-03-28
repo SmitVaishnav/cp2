@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Header() {
   return (
@@ -7,7 +9,12 @@ function Header() {
       <h2>STUDENTCORNER</h2>
       <div className='flex gap-5'>
         <h4 className=' no-underline hover:underline'>ABOUT</h4>
-        <h4 className=' no-underline hover:underline'>LOGIN</h4>
+        <Link to="/Login">
+        <h4 className='no-underline hover:underline'>LOGIN</h4>
+        </Link>
+        <Link to='/Register'>
+        <h4 className='no-underline hover:underline'>REGISTER</h4>
+        </Link>
       </div>
 
     </div>
