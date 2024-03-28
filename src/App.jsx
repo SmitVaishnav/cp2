@@ -28,24 +28,3 @@ function App() {
 }
 
 export default App;
-
-// import React from 'react'
-// import Header from './components/Header'
-// import Foreground from './components/Foreground'
-// import Cards from './components/Cards'
-
-
-// function App() {
-//   return (
-//     <div>
-//      <Header/>
-//       <div className='relative bg-[#E6E6DA] w-full h-svh '>
-//       <Foreground/>
-//       </div>
-//       <Cards/>
-     
-//     </div>
-//   )
-// }
-
-// export default App

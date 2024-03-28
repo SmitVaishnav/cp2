@@ -22,6 +22,3 @@ function Header() {
 }
 
 export default Header;
-
-// References
-{/* <Link to={'./Login.jsx'}><h4 className=' no-underline hover:underline'>LOGIN</h4></Link> */}
