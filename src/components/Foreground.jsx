@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-function Foreground() {
-  const [isHovered, setIsHovered] = useState(false);
+function Foreground({ setDivAttribute }) {
+  const [backgroundColor, setBackgroundColor] = useState("bg-[#E6E6DA]");
 
-  const handleHover = () => {
-    setIsHovered(true);
+  const handleMouseEnter = () => {
+    setDivAttribute({ BackgroundColor: "bg-black" });
+  };
+  const handleMouseOut = () => {
+    setDivAttribute({ BackgroundColor: "bg-[#E6E6DA]" });
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+
+
+  // const [isHovered, setIsHovered] = useState(false);
+
+  // const handleHover = () => {
+  //   setIsHovered(true);
+  // };
+
+  // const handleMouseLeave = () => {
+  //   setIsHovered(false);
+  // };
   return (
     <div className="text-[7vw] absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-center align-middle font-medium text-zinc-900 ">
-      <div
-        className={isHovered ? "text-hovered" : ""}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleMouseLeave}
-      >
-        EVENTS
-      </div>
-      <div className="h-44">HACKATHONS</div>
-      <div className="h-44">SCHOLORSHIPS</div>
+      <div>EVENTS</div>
+      <div className="text-[7vw]">HACKATHONS</div>
+      <div className="text-[7vw]">SCHOLORSHIPS</div>
     </div>
   );
 }
