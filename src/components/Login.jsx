@@ -30,6 +30,10 @@ const Login = () => {
                 />
                 <button type="submit">Login</button>
             </form>
+            <div className="additional-options">
+                <Link to="/forget-password" className="forget-password">Forgot Password?</Link>
+                <Link to="/register" className="register-link">Don't have an account? Register</Link>
+            </div>
         </div>
     )
 }

@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div className=" bg-[#E6E6DA] h-12 flex font-semibold text-lg justify-between items-center px-5 ">
-      <h2 className="font-custom text-[23px]">STUDENTCORNER</h2>
+    <div className=" bg-[#E6E6DA] h-12 flex font-semibold text-lg justify-between items-center px-10 fixed w-screen ">
+      <Link to="/">
+        <h2 className="font-custom text-[23px]">STUDENTCORNER</h2>
+      </Link>
+      
       <div className="flex gap-5">
         <h4 className=" no-underline hover:underline font-light">ABOUT</h4>
         <Link to="/Login">
