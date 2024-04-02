@@ -101,20 +101,26 @@ function App() {
                 className={`min-h-screen w-[120%] transition-all duration-500  ${backgroundColor} `}
               >
                 <div
-                  className={`text-[7vw] absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-center align-middle font-medium text-zinc-900 `}
+                  className={`text-[7vw]  absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-center align-middle font-medium text-zinc-900 `}
                 >
                   <div className={``}>
-                    <h1 className={`duration-500 transition-all ${textColor}`}>
+                    <h1
+                      className={`duration-500 transition-all font-custom-light ${textColor}`}
+                    >
                       EVENTS
                     </h1>
                   </div>
                   <div className={`text-[7vw] `}>
-                    <h1 className={`duration-500 transition-all ${textColor}`}>
+                    <h1
+                      className={`duration-500 transition-all font-custom-light ${textColor}`}
+                    >
                       HACKATHONS
                     </h1>
                   </div>
                   <div className={`text-[7vw] `}>
-                    <h1 className={`duration-500 transition-all ${textColor}`}>
+                    <h1
+                      className={`duration-500 transition-all font-custom-light  ${textColor}`}
+                    >
                       SCHOLARSHIPS
                     </h1>
                   </div>
