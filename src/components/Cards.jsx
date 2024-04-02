@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
 import card from "@material-tailwind/react/theme/components/card";
+import { Link } from "react-router-dom";
 
 function Cards(props) {
   const { cardData } = props;
@@ -19,9 +20,11 @@ function Cards(props) {
         <div className="p-5">
           <div className="p-5 space-y-2">
             <h1 className="text-[2vw] font-custom-bold">{cardData.cardName}</h1>
+            <Link to={cardData.link}>
             <Button className="outline outline-2 outline-offset-2 rounded-full p-2 ">
               Explore
             </Button>
+            </Link>
             <p className="font-custom-light">{cardData.desc}</p>
           </div>
         </div>

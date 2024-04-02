@@ -6,6 +6,8 @@ import Cards from "./components/Cards";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Forgetpass from "./components/Forgetpass";
+import Cardtwo from "./components/Cardtwo";
+import NewsLetter from "./components/NewsLetter";
 
 //card object list
 const cardObjs = [
@@ -13,16 +15,19 @@ const cardObjs = [
     img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZXZlbnRzfGVufDB8fDB8fHww",
     cardName: "EVENTS",
     desc: "Discover the pulse of campus life with our comprehensive guide to vibrant college events and activities.",
+    link: "/events",
   },
   {
     img: "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D",
     cardName: "HACKATHONS",
     desc: "Fuel your innovation and join the next generation of disruptors at our hackathon hub – where ideas collide and solutions emerge.",
+    link: "/hackathons",
   },
   {
     img: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbGxlZ2UlMjBncmFkdWF0aW9ufGVufDB8fDB8fHww",
     cardName: "SCHOLARSHIPS",
     desc: "Unlock the gateway to academic excellence and financial empowerment through our curated scholarships hub.",
+    link: "/scholorships",
   },
 ];
 
@@ -47,7 +52,7 @@ function App() {
         (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
         100;
       if (textScrollPercentage >= 45) {
-        setTextColor("text-zinc-800");
+        setTextColor("text-[#B0A4D1]");
       } else {
         setTextColor("text-[#18181B]");
       }
@@ -81,7 +86,9 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <div className={` transition-all duration-500 ${textColor}`}>
+        <Header />
+      </div>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -120,6 +127,11 @@ function App() {
                 <Cards cardData={cardObjs[0]} />
                 <Cards cardData={cardObjs[1]} />
                 <Cards cardData={cardObjs[2]} />
+
+                {/*cards two */}
+                {/* <Cardtwo cardData={cardObjs[0]} />
+                <Cardtwo cardData={cardObjs[1]} />
+                <Cardtwo cardData={cardObjs[2]} /> */}
               </div>
             </>
           }
