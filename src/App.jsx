@@ -5,6 +5,7 @@ import Foreground from "./components/Foreground";
 import Cards from "./components/Cards";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Forgetpass from "./components/Forgetpass";
 
 //card object list
 const cardObjs = [
@@ -20,7 +21,7 @@ const cardObjs = [
   },
   {
     img: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNvbGxlZ2UlMjBncmFkdWF0aW9ufGVufDB8fDB8fHww",
-    cardName: "SCHOLORSHIPS",
+    cardName: "SCHOLARSHIPS",
     desc: "Unlock the gateway to academic excellence and financial empowerment through our curated scholarships hub.",
   },
 ];
@@ -84,6 +85,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forget-password" element={<Forgetpass />} />
         <Route
           path="/"
           element={
@@ -106,14 +108,14 @@ function App() {
                   </div>
                   <div className={`text-[7vw] `}>
                     <h1 className={`duration-500 transition-all ${textColor}`}>
-                      SCHOLORSHIPS
+                      SCHOLARSHIPS
                     </h1>
                   </div>
                 </div>
                 {/* <Foreground /> */}
               </div>
               <div
-                className={`w-[120%] h-svh flex p-10 justify-around items-center gap-10 duration-500 transition-all ${backgroundColor}`}
+                className={`overflow-hidden w-[120%] h-svh flex p-10 justify-around items-center gap-10 duration-500 transition-all ${backgroundColor}`}
               >
                 <Cards cardData={cardObjs[0]} />
                 <Cards cardData={cardObjs[1]} />

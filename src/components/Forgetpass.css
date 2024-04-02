@@ -5,7 +5,7 @@
     overflow-y: auto;
 }
 
-.login-container {
+.forgot-password-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,14 +14,14 @@
     background-color: rgb(230, 230, 218);
 }
 
-.loginHeading {
+.forgot-password-heading {
     margin-bottom: 1em;
     color: black;
     font-family: Montserrat, sans-serif;
     font-size: 3em;
 }
 
-.login-form {
+.forgot-password-form {
     display: flex;
     flex-direction: column;
     gap: 2em;
@@ -35,7 +35,7 @@
     background-color: rgb(230, 230, 218);
 }
 
-.login-form input {
+.forgot-password-form input {
     padding: 0.75em;
     border: 2px solid #8b7979;
     border-radius: 5px;
@@ -44,16 +44,16 @@
     transition: border-color 300ms, box-shadow 300ms;
 }
 
-.login-form input:focus {
+.forgot-password-form input:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(139, 121, 121, 0.5);
 }
 
-.login-form input:hover {
+.forgot-password-form input:hover {
     border-color: #8b7979;
 }
 
-.login-form button {
+.forgot-password-form button {
     padding: 0.75em 1em;
     border: none;
     border-radius: 5px;
@@ -65,41 +65,45 @@
     transition: background-color 300ms, transform 200ms;
 }
 
-.login-form button:hover {
+.forgot-password-form button:hover {
     background-color: #8b7979;
     transform: translateY(-2px);
 }
 
-.additional-options {
+.forgot-password-options {
     margin-top: 1em;
     text-align: center;
 }
 
-.register-link, .forget-password {
+.forgot-password-link {
     text-decoration: none;
     color: #8b7979;
     font-weight: bold;
     display: block; /* Makes links more accessible */
 }
+.email-phone{
+    color: black;
+    font-weight:700 ;
+}
 
 @media (max-width: 768px) {
-    .login-form {
+    .forgot-password-form {
         width: 90%;
         padding: 2em;
         gap: 1em;
     }
 
-    .loginHeading {
+    .forgot-password-heading {
         font-size: 2em; /* Adjust for smaller screens */
     }
 
-    .login-form input, .login-form button {
+    .forgot-password-form input, .forgot-password-form button {
         font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
-    .login-form {
+    .forgot-password-form {
         width: 90%; /* More responsive on very small screens */
     }
 }
