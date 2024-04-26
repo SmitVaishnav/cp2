@@ -1,42 +1,4 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Parisienne&display=swap');
-
-*{
-  font-family: monospace;
-}
-
-.font-custom{
-  font-family: "Montserrat";
-  font-weight: 700;
-}
-.font-custom-bold{
-  font-family: "Montserrat";
-  font-weight: 800;
-}
-.font-custom-light{
-  font-family: "Montserrat";
-  font-weight: 500;
-}
-.font-custom-extralight{
-  font-family: "Montserrat";
-  font-weight: 300;
-}
-.font-custom-italic{
-  font-family: "Montserrat";
-  font-weight: 500;
-  font-style: italic;
-}
-
-
-.montserrat {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
 
