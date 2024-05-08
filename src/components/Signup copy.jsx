@@ -1,8 +1,84 @@
 import { Input } from "postcss";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Signup() {
+  const [formData, setFormData] = useState({
+    email: "",
+    fullName: "",
+    phoneNumber: "",
+    password: "",
+  });
+  /*
+  // signup user
+async function signup(userParams) {
+  // validate
+  if (await db.User.findOne({ where: { email: userParams.email } })) {
+    throw 'Email "' + userParams.email + '" is already taken';
+  }
+  return await db.User.create(userParams);
+}
+
+   */
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignUp = async (e) => {
+    
+    try {
+      e.preventDefault;
+      fetch("http://localhost:3000/signup", 
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+      ).then((response) => {
+        console.log(response);
+      });
+
+      alert("Sign up successful!");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault;
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
+
+  //   createUserWithEmailAndPassword(database, email, password).then((data) => {
+  //     console.log(data, "authData");
+  //   });
+  // };
+
+  //   const handleSubmit = async (e) => {
+  //     e.preventDefault();
+  //     try {
+  //       const response = await fetch("/signup", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(formData),
+  //       });
+  //       const data = await response.json();
+  //       console.log(data); // Log the response from the server
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   };
+
+  //   const handleChange = (e) => {
+  //     setFormData({
+  //       ...formData,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //   };
   return (
     <div className="flex h-screen bg-[url('./assets/64a6d9e3b3affa8513290f40_account-gradient.jpg')]">
       <div className=" w-1/2 h-screen  flex flex-col  justify-center px-24 -mt-16 leading-[6.2vw]">
@@ -20,7 +96,12 @@ function Signup() {
       </div>
       <div className=" w-1/2 h-screen uppercase py-20 pr-10 ">
         <div className="bg-[#fceadc] w-full h-[88vh] px-36 flex flex-col rounded-xl gap-28 ">
-          <form action="" onSubmit={handleSubmit}>
+          <form
+            action=""
+            onSubmit={(e) => {
+              handleSignUp(e);
+            }}
+          >
             <div className="flex flex-col mt-16">
               <label
                 htmlFor=""
@@ -29,10 +110,12 @@ function Signup() {
                 email
               </label>
               <input
-                type="text"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className=" px-5 text-[1vw] border-[1px] bg-[#fceadc] border-[#3f4527] rounded-[5px] w-full h-[6vh] focus:outline-none focus:border-zinc-700 border-opacity-30 mb-7"
               />
-              <label
+              {/* <label
                 htmlFor=""
                 className="font-['GT_Walsheim'] text-[#3f4527] font-black text-[1.4vw] mb-2"
               >
@@ -41,8 +124,8 @@ function Signup() {
               <input
                 type="text"
                 className="px-5 text-[1vw] border-[1px] bg-[#fceadc] border-[#3f4527] rounded-[5px] w-full h-[6vh] focus:outline-none focus:border-zinc-700 border-opacity-30 mb-7"
-              />
-              <label
+              /> */}
+              {/* <label
                 htmlFor=""
                 className="font-['GT_Walsheim'] text-[#3f4527] font-black text-[1.4vw] mb-2"
               >
@@ -51,7 +134,7 @@ function Signup() {
               <input
                 type="text"
                 className=" px-5 text-[1vw] border-[1px] bg-[#fceadc] border-[#3f4527] rounded-[5px] w-full h-[6vh] focus:outline-none focus:border-zinc-700 border-opacity-30 mb-7"
-              />
+              /> */}
               <label
                 htmlFor=""
                 className="font-['GT_Walsheim'] text-[#3f4527] font-black text-[1.4vw] mb-2"
@@ -59,7 +142,9 @@ function Signup() {
                 password
               </label>
               <input
-                type="text"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="px-5 text-[1vw] border-[1px] bg-[#fceadc] border-[#3f4527] rounded-[5px] w-full h-[6vh] focus:outline-none focus:border-zinc-700 border-opacity-30 mb-10"
               />
               <input

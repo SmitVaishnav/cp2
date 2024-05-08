@@ -1,8 +1,29 @@
 import { Input } from "postcss";
 import React from "react";
 import { Link } from "react-router-dom";
+import bcrypt from 'bcryptjs'
 
 function Login() {
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const hashedPassword = bcrypt.hashSync(e.target.password.value, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+
+    fetch("http://localhost:3000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: e.target.email.value,
+        password: hashedPassword,
+      }),
+    }).then((response) => {
+      document.cookie = `username=${ e.target.email.value}; path=/`;
+      document.cookie = `password=${hashedPassword}; path=/`;
+    }
+    );
+  }
   return (
     <div className="flex h-screen bg-[url('./assets/64a6d9e3b3affa8513290f40_account-gradient.jpg')]">
       <div className=" w-1/2 h-screen  flex flex-col  justify-center px-24 -mt-20 leading-[6.2vw]">
@@ -18,7 +39,7 @@ function Login() {
       </div>
       <div className=" w-1/2 h-screen uppercase py-20 pr-10 ">
         <div className="bg-[#fceadc] w-full h-[88vh] p-36 flex flex-col rounded-xl gap-32 ">
-          <form action="">
+          <form action={handleLogin}>
             <div className="flex flex-col">
               <div className="mb-8">
                 <h2 className="font-['GT_Walsheim'] font-black text-[3.2vw] text-[#3f4527]">
