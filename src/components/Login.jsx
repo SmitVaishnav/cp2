@@ -1,13 +1,15 @@
 import { Input } from "postcss";
 import React from "react";
 import { Link } from "react-router-dom";
-import bcrypt from 'bcryptjs'
+import bcrypt from "bcryptjs";
 
 function Login() {
-
   const handleLogin = (e) => {
     e.preventDefault();
-    const hashedPassword = bcrypt.hashSync(e.target.password.value, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+    const hashedPassword = bcrypt.hashSync(
+      e.target.password.value,
+      "$2a$10$CwTycUXWue0Thq9StjUM0u"
+    );
 
     fetch("http://localhost:3000/api/users/login", {
       method: "POST",
@@ -18,12 +20,16 @@ function Login() {
         email: e.target.email.value,
         password: hashedPassword,
       }),
-    }).then((response) => {
-      document.cookie = `username=${ e.target.email.value}; path=/`;
-      document.cookie = `password=${hashedPassword}; path=/`;
-    }
-    );
-  }
+    })
+      .then((response) => {
+        document.cookie = `username=${e.target.email.value}; path=/`;
+        document.cookie = `password=${hashedPassword}; path=/`;
+      })
+      .catch((error) => {
+        alert("Invalid email or password");
+        console.log(error);
+      });
+  };
   return (
     <div className="flex h-screen bg-[url('./assets/64a6d9e3b3affa8513290f40_account-gradient.jpg')]">
       <div className=" w-1/2 h-screen  flex flex-col  justify-center px-24 -mt-20 leading-[6.2vw]">
