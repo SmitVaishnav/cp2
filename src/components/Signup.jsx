@@ -1,10 +1,10 @@
 import { Input } from "postcss";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { database } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import bcrypt from 'bcryptjs'
 
 function Signup() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     fullName: "",
@@ -12,27 +12,54 @@ function Signup() {
     password: "",
   });
 
+  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    console.log(email, password);
     try {
-      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      fetch("http://localhost:3000/api/users/signup", 
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          {
+            email: email,
+            password: password
+          }
+        ),
+      }
+      ).then((response) => {
+        console.log(response);
+        const hashedPassword = bcrypt.hashSync(password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+        // setting username and password in cookies with hash
+        document.cookie = `username=${email}; path=/`;
+        document.cookie = `password=${hashedPassword}; path=/`;
+
+      });
+
       alert("Sign up successful!");
+      // redirect to Landing page
+      navigate("/");
     } catch (error) {
       alert(error.message);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault;
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
 
-    createUserWithEmailAndPassword(database, email, password).then((data) => {
-      console.log(data, "authData");
-    });
-  };
+  //   createUserWithEmailAndPassword(database, email, password).then((data) => {
+  //     console.log(data, "authData");
+  //   });
+  // };
 
   //   const handleSubmit = async (e) => {
   //     e.preventDefault();
@@ -77,7 +104,7 @@ function Signup() {
           <form
             action=""
             onSubmit={(e) => {
-              handleSubmit(e);
+              handleSignUp(e);
             }}
           >
             <div className="flex flex-col mt-16">

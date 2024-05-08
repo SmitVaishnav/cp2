@@ -1,11 +1,65 @@
 import { motion } from "framer-motion";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 function LandingPage2() {
   const [isHovering, setHovering] = useState(false);
   const [isHovering1, setHovering1] = useState(false);
   const [isHovering2, setHovering2] = useState(false);
+  const navigate = useNavigate();
+
+  function getCookie(name) {
+    const cookieName = `${name}=`;
+    const decodedCookies = decodeURIComponent(document.cookie);
+    const cookiesArray = decodedCookies.split(';');
+  
+    for (let i = 0; i < cookiesArray.length; i++) {
+      let cookie = cookiesArray[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(cookieName) === 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
+    }
+    return '';
+  }
+
+  useEffect(()=>{
+    // check if the user is correctly logged in using cookies
+    console.log("Checking if user is logged in");
+    console.log(getCookie("username"));
+    console.log(getCookie("password"));
+    fetch(
+      "http://localhost:3000/api/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: getCookie("username"),
+          password: getCookie("password"),
+        }),
+      }
+    ).then((response) => {
+     if(response.status === 200){
+       console.log("User is logged in");
+      }
+      else{
+        console.log("User is not logged in");
+        navigate("/login");
+      }
+    }).catch((error) => {
+      console.log(error);
+    }
+    )
+
+
+  },[])
+
   return (
     <div className="div-1 bg-zinc-900 h-screen flex">
       <div className="w-1/2 h-screen text-zinc-200 font-['GT_Walsheim'] font-black text-[10vw] uppercase leading-none flex flex-col ">
